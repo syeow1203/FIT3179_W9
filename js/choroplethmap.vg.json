@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Choropleth of Birth Rate per Country 2023",
+    "title": "Birth Rate per Country in 2023",
     "width": 800,
     "height": 400,
     "projection": {"type": "equalEarth"},
@@ -10,18 +10,6 @@
     },
 
     "layer": [
-        {
-            "transform": [
-              {"calculate": "'Data is not available in ' + datum.properties.NAME", "as": "note"}
-            ],
-            
-            "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
-            "encoding": {
-                "tooltip": {
-                    "field": "note"
-              }
-            }
-        },
         
         {
             "data": {
@@ -36,7 +24,20 @@
                 "url": "https://raw.githubusercontent.com/syeow1203/FIT3179_W9/main/js/ne_110m_graticules_30.json",
                 "format":{"type": "topojson", "feature": "ne_110m_graticules_30"}
             },
-            "mark": {"type": "geoshape", "fill": "null", "stroke": "lightgray"}
+            "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+        },
+
+        {
+            "transform": [
+              {"calculate": "'Data is not available in ' + datum.properties.NAME", "as": "note"}
+            ],
+            
+            "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
+            "encoding": {
+                "tooltip": {
+                    "field": "note"
+              }
+            }
         },
 
         {
